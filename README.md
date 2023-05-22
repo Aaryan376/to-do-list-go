@@ -35,6 +35,8 @@ A Todo App to create,read,update and delete todos built using golang, MySQL.
 4. Set up MySQL database: 
 
     &nbsp; Create Database
+    
+    
     &nbsp; Create table in the created database
     
 5. Running the application
