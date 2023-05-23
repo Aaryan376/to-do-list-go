@@ -76,61 +76,7 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
-/*func updateHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		http.NotFound(w, r)
-		return
-	}
 
-	// Read the completed status from the form submission
-	id, err := strconv.Atoi(r.FormValue("id"))
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	completed, err := strconv.ParseBool(r.FormValue("completed"))
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	// Update the todo in the database
-	_, err = db.Exec("UPDATE todos SET completed = ? WHERE id = ?", completed, id)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	// Redirect back to the homepage
-	http.Redirect(w, r, "/", http.StatusSeeOther)
-}*/
-
-/*
-	func updateHandler(w http.ResponseWriter, r *http.Request) {
-		if r.Method != "POST" {
-			http.NotFound(w, r)
-			return
-		}
-
-		// Read the form values
-		id, err := strconv.Atoi(r.FormValue("id"))
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		title := r.FormValue("title")
-
-		// Update the todo in the database
-		_, err = db.Exec("UPDATE todos SET title = ? WHERE id = ?", title, id)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-
-		// Redirect back to the homepage
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-	}
-*/
 func updateHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		http.NotFound(w, r)
