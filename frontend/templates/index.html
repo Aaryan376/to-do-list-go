@@ -21,10 +21,10 @@
     {{range .}}
     <li class="todo-container">
       <form action="/update" method="POST" style="display: inline;" class="todo">
-        <input type="hidden" name="id" value="{{.ID}}">
+        <input type="hidden" name="titleid" value="{{.ID}}">
         <span class="todo-title">{{.Title}}</span>
 
-        <input type="text" name="title" class="edit-title" style="display: none;">
+        <input type="text" name="updatetitle" class="edit-title" style="display: none;">
         <button class="edit-btn btn" type="button" onclick="toggleEdit(this)"><i class="fa-solid fa-pen-to-square fa-2x"></i></button>
         <button type="submit" class="update-btn btn" style="display: none;"><i class="fa-solid fa-check fa-2x" style="color: #2ed141;"></i></button>
         
@@ -32,7 +32,7 @@
 
       </form>
       <form action="/delete" method="POST" style="display: inline;">
-        <input type="hidden" name="id" value="{{.ID}}">
+        <input type="hidden" name="deleteid" value="{{.ID}}">
         <button type="submit" class="delete-btn btn">   <i class="fa-solid fa-trash fa-2x" style="color: #f03333;"></i></button>
      
         

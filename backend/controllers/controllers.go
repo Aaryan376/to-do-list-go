@@ -10,7 +10,7 @@ import (
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
-		http.NotFound(w, r)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -30,7 +30,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 
 func CreateHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
-		http.NotFound(w, r)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -47,16 +47,16 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 
 func UpdateHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
-		http.NotFound(w, r)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
-	id, err := strconv.Atoi(r.FormValue("id"))
+	id, err := strconv.Atoi(r.FormValue("titleid"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	title := r.FormValue("title")
+	title := r.FormValue("updatetitle")
 
 	err = services.UpdateTodoTitleByID(id, title)
 	if err != nil {
@@ -69,11 +69,11 @@ func UpdateHandler(w http.ResponseWriter, r *http.Request) {
 
 func DeleteHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
-		http.NotFound(w, r)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
-	id, err := strconv.Atoi(r.FormValue("id"))
+	id, err := strconv.Atoi(r.FormValue("deleteid"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
